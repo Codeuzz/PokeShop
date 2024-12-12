@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import PokemonInfo from "./PokemonInfo"
 import { useState } from "react"
+import colours from "./utils/pokemon-types"
 
 const Cards = ({data}) => {
     // const [visibleInfo, setVisibleInfo] = useState(false);
@@ -14,8 +15,11 @@ const Cards = ({data}) => {
                     <h4 className="text-2xl uppercase font-semibold">{item.name}</h4>
                     <img src={item.sprites.front_shiny} alt={item.name} className="w-full"/>
                     <div className="flex gap-2">
-                        <span className="bg-green-400 px-1 rounded-lg ">Grass</span> 
-                        <span className="bg-red-400 px-1 rounded-lg">Fire</span> 
+                        {item.types.map(typ => 
+                            <span className={`rounded-lg px-1`}
+                            style={{ backgroundColor: colours[typ.type.name] || '#777' }}
+                            >{typ.type.name}</span> 
+                        )}
                     </div>
                     <button className="border-2 border-black bg-amber-400 px-2 rounded-xl">Add to Cart</button>
                     <button
