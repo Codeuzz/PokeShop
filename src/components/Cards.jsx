@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom"
-import colours from "./utils/pokemon-types"
+import colours from "../utils/pokemon-types"
 import { useState } from "react"
+import { useDispatch, useSelector } from 'react-redux';
+import { addCartItem } from "../utils/slices/cartSlice";
 
 const Cards = ({data}) => {
-    const [cartItems, setCartItems] = useState([]);
+    // const [cartItems, setCartItems] = useState([]);
+    const dispatch = useDispatch()
+    const {cartItems} = useSelector((state) => state.cart)
 
     const addItem = (pokemon) => {
-        setCartItems(prev => [
-            ...prev,
-            pokemon
-        ])
+        dispatch(addCartItem(pokemon))
+        
 
-        console.log(cartItems)
+        // console.log(cartItems)
 
     }
 
@@ -19,12 +21,12 @@ const Cards = ({data}) => {
         <>
             {data.map((item) => 
             
-                <div className="w-60 bg-purple-500 border-2 gap-2 rounded-2xl py-2 px-2 flex flex-col items-center relative">  
+                <div key={item.id} className="w-60 bg-purple-500 border-2 gap-2 rounded-2xl py-2 px-2 flex flex-col items-center relative">  
                     <h4 className="text-2xl uppercase font-semibold">{item.name}</h4>
                     <img src={item.sprites.front_default} alt={item.name} className="w-full"/>
                     <div className="flex gap-2">
-                        {item.types.map(typ => 
-                            <span className={`rounded-lg px-1`}
+                        {item.types.map((typ, index) => 
+                            <span key={index} className={`rounded-lg px-1`}
                             style={{ backgroundColor: colours[typ.type.name] || '#777' }}
                             >{typ.type.name}</span> 
                         )}

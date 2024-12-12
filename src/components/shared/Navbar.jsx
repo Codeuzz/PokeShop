@@ -12,7 +12,7 @@ const Navbar = () => {
                     <Link to="/pokemon-list">Pokemon</Link>
                 </li>
                 <li>
-                    <Link to="/cart">Cart</Link>
+                    <Link to="/cart" className="py-2 px-4 border-2 border-black rounded-2xl hover:bg-amber-400"><i className="fa-solid fa-cart-shopping "></i></Link>
                 </li>
             </ul>
         </nav>

@@ -1,4 +1,4 @@
-import colours from "./utils/pokemon-types";
+import colours from "../utils/pokemon-types";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -24,7 +24,7 @@ const PokemonInfo = () => {
     return (
         <div 
             style={{ backgroundColor: colours[pokemon.types[0].type.name] || '#777' }}
-            className="min-w-full min-h-screen bg-gray-100 flex justify-center items-center"
+            className="min-w-full min-h-screen bg-gray-100 flex  justify-center items-center"
         >
             <div className="w-3/4 bg-white p-8 rounded-xl shadow-lg flex flex-col items-center justify-start">
                 <div className="w-full flex justify-between items-center mb-4">
@@ -36,7 +36,7 @@ const PokemonInfo = () => {
                         Back
                     </button>
                 </div>
-                <div className="flex gap-10 items-center">
+                <div className="flex gap-10 items-center justify-center flex-wrap">
                     <img 
                         src={pokemon.sprites.other['official-artwork'].front_default} 
                         alt={pokemon.name} 
