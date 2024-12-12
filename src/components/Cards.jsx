@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom"
 import colours from "./utils/pokemon-types"
+import { useState } from "react"
 
 const Cards = ({data}) => {
+    const [cartItems, setCartItems] = useState([]);
+
+    const addItem = (pokemon) => {
+        setCartItems(prev => [
+            ...prev,
+            pokemon
+        ])
+
+        console.log(cartItems)
+
+    }
+
     return (
         <>
             {data.map((item) => 
@@ -16,13 +29,16 @@ const Cards = ({data}) => {
                             >{typ.type.name}</span> 
                         )}
                     </div>
-                    <button className="border-2 border-black bg-amber-400 px-2 rounded-xl">Add to Cart</button>
-                    <Link
-                        className="bg-purple-300 shadow-md shadow-black p-1 rounded-full absolute -right-2 -top-2"
-                        to={`/pokemon-list/${item.id}`}
+                    <Link 
+                    className="border-2 border-black bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
+                    to={`/pokemon-list/${item.id}`}
+                    >Details</Link>
+                    <button
+                        className="bg-purple-300 shadow-md shadow-black py-1 px-3 rounded-full absolute -right-2 -top-2 hover:bg-amber-400"
+                        onClick={() => addItem(item)}
                     >
-                        Infos
-                    </Link>
+                        <i className="fa-solid fa-plus"/>
+                    </button>
                 </div>
                 
             )}    
