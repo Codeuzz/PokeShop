@@ -4,6 +4,7 @@ import {
   removeCartItem,
 } from "../utils/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -17,14 +18,15 @@ const Cart = () => {
         <ul>
           {cartItems.length > 0 ? (
             cartItems.map((item) => (
-              <li key={item.id}>
-                <span className="text-2xl">{item.name} </span>
+              <li className="flex items-center gap-2" key={item.id}>
                 <button
-                  className="bg-amber-400 px-2 shadow-md shadow-black rounded-xl hover:bg-amber-500"
+                  className="bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
                   onClick={() => dispatch(removeCartItem(item))}
+                  title="Remove From Cart"
                 >
                   <i className="fa-solid fa-trash"></i>
-                </button>
+                </button> 
+                <Link to={`/pokemon-list/${item.id}`} className="text-2xl">{item.name} </Link>
               </li>
             ))
           ) : (

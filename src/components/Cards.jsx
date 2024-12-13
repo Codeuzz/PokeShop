@@ -1,19 +1,11 @@
 import { Link } from "react-router-dom";
 import colours from "../utils/pokemon-types";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addCartItem } from "../utils/slices/cartSlice";
+import AddToCart from "./shared/AddToCart";
 
 const Cards = ({ data }) => {
   // const [cartItems, setCartItems] = useState([]);
-  const dispatch = useDispatch();
-  const { cartItems } = useSelector((state) => state.cart);
 
-  const addItem = (pokemon) => {
-    dispatch(addCartItem(pokemon));
-
-    // console.log(cartItems)
-  };
 
   return (
     <>
@@ -42,15 +34,11 @@ const Cards = ({ data }) => {
           <Link
             className="border-2 border-black bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
             to={`/pokemon-list/${item.id}`}
+            title="Pokemon Details"
           >
             Details
           </Link>
-          <button
-            className="bg-purple-300 shadow-md shadow-black py-1 px-3 rounded-full absolute -right-2 -top-2 hover:bg-amber-400"
-            onClick={() => addItem(item)}
-          >
-            <i className="fa-solid fa-plus" />
-          </button>
+          <AddToCart item={item} />
         </div>
       ))}
     </>

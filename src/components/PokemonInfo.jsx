@@ -1,6 +1,7 @@
 import colours from "../utils/pokemon-types";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import AddToCart from "./shared/AddToCart";
 
 const PokemonInfo = () => {
   const { name } = useParams();
@@ -31,17 +32,20 @@ const PokemonInfo = () => {
   return (
     <div
       style={{ backgroundColor: colours[pokemon.types[0].type.name] || "#777" }}
-      className="min-w-full min-h-screen bg-gray-100 flex  justify-center items-center"
+      className="min-w-full min-h-screen bg-gray-100 flex  justify-center items-center "
     >
-      <div className="w-3/4 bg-white p-8 rounded-xl shadow-lg flex flex-col items-center justify-start">
+      <div className="w-3/4 bg-white p-8 rounded-xl shadow-lg flex flex-col items-center justify-start relative">
         <div className="w-full flex justify-between items-center mb-4">
           <h1 className="text-4xl font-bold capitalize">{pokemon.name}</h1>
+          <div>
           <button
             className="bg-purple-500 text-white px-4 py-2 rounded-lg"
             onClick={() => navigate(-1)}
           >
-            Back
+            Go Back
           </button>
+          <AddToCart item={pokemon} />
+          </div>
         </div>
         <div className="flex gap-10 items-center justify-center flex-wrap">
           <img
