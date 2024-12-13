@@ -10,7 +10,7 @@ const Home = () => {
       >
         Get My Pokemon
       </Link>
-      <img src="src/assets/firstpoke.png" className="max-w-xl" />
+      <img src="./public/firstpoke.png" className="max-w-xl" /> 
     </div>
   );
 };

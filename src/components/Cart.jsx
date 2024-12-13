@@ -26,11 +26,11 @@ const Cart = () => {
                 >
                   <i className="fa-solid fa-trash"></i>
                 </button> 
-                <Link to={`/pokemon-list/${item.id}`} className="text-2xl">{item.name} </Link>
+                <Link to={`/PokeShop/pokemon-list/${item.id}`} className="text-2xl">{item.name} </Link>
               </li>
             ))
           ) : (
-            <li>No Items</li>
+            <li>No Pokemon</li>
           )}
         </ul>
       </div>

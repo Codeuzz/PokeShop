@@ -8,11 +8,11 @@ import PokemonInfo from "./components/PokemonInfo";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/pokemon-list" element={<PokemonList />} />
-      <Route path="/pokemon-info" element={<PokemonList />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/pokemon-list/:name" element={<PokemonInfo />} />
+      <Route path="/PokeShop/" element={<Home />} />
+      <Route path="/PokeShop/pokemon-list" element={<PokemonList />} />
+      <Route path="/PokeShop/pokemon-info" element={<PokemonList />} />
+      <Route path="/PokeShop/cart" element={<Cart />} />
+      <Route path="/PokeShop/pokemon-list/:name" element={<PokemonInfo />} />
     </Routes>
   );
 }

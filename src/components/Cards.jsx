@@ -33,7 +33,7 @@ const Cards = ({ data }) => {
           </div>
           <Link
             className="border-2 border-black bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
-            to={`/pokemon-list/${item.id}`}
+            to={`/PokeShop/pokemon-list/${item.id}`}
             title="Pokemon Details"
           >
             Details
