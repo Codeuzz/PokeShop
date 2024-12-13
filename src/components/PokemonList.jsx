@@ -85,13 +85,15 @@ const PokemonList = () => {
         <Cards data={data} />
       </div>
       <div className="flex gap-4 mb-10">
-        <button
+        {page > 0 && <button
           className="border-2 border-black bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
           onClick={() => setPage((prev) => (prev > 0 ? prev - 1 : prev))}
           disabled={loading || page === 0}
         >
           <i className="fa-solid fa-arrow-left"></i> Prev 12
         </button>
+        }
+        
         <button
           className="border-2 border-black bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
           onClick={() => setPage((prev) => prev + 1)}
