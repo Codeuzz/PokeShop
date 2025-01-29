@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SearchBar from "./SearchBar";
-import Cards from "./Cards";
+import SearchBar from "@atoms/SearchBar";
+import Cards from "@molecules/Cards";
 import { Pokemon } from "@customTypes/types";
 
 const PokemonList = () => {

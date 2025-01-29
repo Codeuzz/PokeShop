@@ -1,8 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import colours from "../utils/pokemon-types";
-import { useState } from "react";
-import AddToCart from "./shared/AddToCart";
+import colours from "../../utils/pokemon-types";
+import AddToCart from "@atoms/AddToCart";
 import { Pokemon } from "@customTypes/types";
 
 interface CardsProps {
@@ -10,8 +8,6 @@ interface CardsProps {
 }
 
 const Cards = ({ data }: CardsProps) => {
-  // const [cartItems, setCartItems] = useState([]);
-
   return (
     <>
       {data.map((item) => (

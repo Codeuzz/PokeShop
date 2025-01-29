@@ -1,8 +1,8 @@
 import React from "react";
-import colours from "../utils/pokemon-types";
+import colours from "../../utils/pokemon-types";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import AddToCart from "./shared/AddToCart";
+import AddToCart from "@atoms/AddToCart";
 import { Pokemon } from "@customTypes/types";
 
 const PokemonInfo = () => {

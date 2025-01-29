@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.jsx";
+import App from "@pages/App";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import Navbar from "./components/shared/Navbar.jsx";
+import Navbar from "@molecules/Navbar.js";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

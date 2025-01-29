@@ -1,9 +1,9 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Home from "./components/Home";
-import PokemonList from "./components/PokemonList";
+import Home from "@organisms/Home";
+import PokemonList from "@organisms/PokemonList";
 import "./App.css";
-import Cart from "./components/Cart";
-import PokemonInfo from "./components/PokemonInfo";
+import Cart from "@organisms/Cart";
+import PokemonInfo from "@organisms/PokemonInfo";
 
 function App() {
   return (
