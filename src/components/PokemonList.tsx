@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import SearchBar from "./SearchBar";
 import Cards from "./Cards";
-import { Pokemon } from "../customTypes/types";
+import { Pokemon } from "@customTypes/types";
 
 const PokemonList = () => {
   const [data, setData] = useState<Pokemon[]>([]);
