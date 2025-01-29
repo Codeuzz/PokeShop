@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "@organisms/Home";
 import PokemonList from "@organisms/PokemonList";
-import "./App.css";
+import "src/App.css";
 import Cart from "@organisms/Cart";
 import PokemonInfo from "@organisms/PokemonInfo";
 
