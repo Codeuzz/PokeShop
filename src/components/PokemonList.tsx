@@ -3,18 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import SearchBar from "./SearchBar";
 import Cards from "./Cards";
-
-export interface Pokemon {
-  name: string;
-  sprites: {
-    front_default: string;
-  };
-  types: { type: { name: string } }[];
-  stats: { base_stat: number; stat: { name: string } }[];
-  id: number;
-  height: number;
-  weight: number;
-}
+import { Pokemon } from "../types/types";
 
 const PokemonList = () => {
   const [data, setData] = useState<Pokemon[]>([]);

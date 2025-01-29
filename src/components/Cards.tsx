@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import colours from "../utils/pokemon-types";
 import { useState } from "react";
 import AddToCart from "./shared/AddToCart";
-import { Pokemon } from "./PokemonList";
+import { Pokemon } from "../types/types";
 
 interface CardsProps {
   data: Pokemon[];

@@ -1,12 +1,14 @@
+import React from "react";
 import colours from "../utils/pokemon-types";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AddToCart from "./shared/AddToCart";
+import { Pokemon } from "../types/types";
 
 const PokemonInfo = () => {
-  const { name } = useParams();
+  const { name } = useParams<{ name: string }>();
   const navigate = useNavigate();
-  const [pokemon, setPokemon] = useState(null);
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,7 +16,7 @@ const PokemonInfo = () => {
         const response = await fetch(
           `https://pokeapi.co/api/v2/pokemon/${name}`
         );
-        const data = await response.json();
+        const data: Pokemon = await response.json();
         setPokemon(data);
       } catch (error) {
         console.error("Failed to fetch Pokemon data:", error);
