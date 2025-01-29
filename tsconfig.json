@@ -12,7 +12,7 @@
       "@organisms/*": ["src/components/organisms/*"],
       "@templates/*": ["src/components/templates/*"],
       "@pages/*": ["src/components/pages/*"],
-      "@store/*": ["src/store/*"],
+      "@store/*": ["src/hooks/store/*"],
       "@customTypes/*": ["src/customTypes/*"]
     },
     "esModuleInterop": true
