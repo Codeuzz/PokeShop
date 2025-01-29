@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Pokemon } from "../types/types";
+import { Pokemon } from "../customTypes/types";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<Pokemon[]>([]);

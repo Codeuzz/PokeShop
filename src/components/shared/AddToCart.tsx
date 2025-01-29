@@ -1,12 +1,14 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../../utils/slices/cartSlice";
 import { useState } from "react";
+import { Pokemon } from "@customTypes/types";
 
 const AddToCart = ({ item }) => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
 
-  const addItem = (pokemon) => {
+  const addItem = (pokemon: Pokemon) => {
     dispatch(addCartItem(pokemon));
 
     setMessage(`${pokemon.name} added to cart!`);
