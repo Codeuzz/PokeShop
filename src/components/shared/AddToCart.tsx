@@ -34,8 +34,10 @@ const AddToCart = ({ item }: AddToCartProps) => {
       {message && (
         <p
           className={`${
-            isAlreadyInCart ? "bg-red-200 " : "bg-green-200 "
-          } py-1 px-2 rounded-md font-bold text-purple-500 absolute -top-6`}
+            isAlreadyInCart
+              ? "bg-red-500 text-white"
+              : "bg-green-200 text-purple-500"
+          } py-1 px-2 rounded-md font-bold  absolute -top-6`}
         >
           {message}
         </p>
