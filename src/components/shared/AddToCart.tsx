@@ -4,9 +4,13 @@ import { addCartItem } from "../../utils/slices/cartSlice";
 import { useState } from "react";
 import { Pokemon } from "@customTypes/types";
 
-const AddToCart = ({ item }) => {
+interface AddToCartProps {
+  item: Pokemon;
+}
+
+const AddToCart = ({ item }: AddToCartProps) => {
   const dispatch = useDispatch();
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<string>("");
 
   const addItem = (pokemon: Pokemon) => {
     dispatch(addCartItem(pokemon));
