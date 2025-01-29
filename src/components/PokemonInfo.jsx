@@ -12,7 +12,7 @@ const PokemonInfo = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${name}`,
+          `https://pokeapi.co/api/v2/pokemon/${name}`
         );
         const data = await response.json();
         setPokemon(data);
@@ -38,13 +38,13 @@ const PokemonInfo = () => {
         <div className="w-full flex justify-between items-center mb-4">
           <h1 className="text-4xl font-bold capitalize">{pokemon.name}</h1>
           <div>
-          <button
-            className="bg-purple-500 text-white px-4 py-2 rounded-lg"
-            onClick={() => navigate(-1)}
-          >
-            Go Back
-          </button>
-          <AddToCart item={pokemon} />
+            <button
+              className="bg-purple-500 text-white px-4 py-2 rounded-lg"
+              onClick={() => navigate(-1)}
+            >
+              Go Back
+            </button>
+            <AddToCart item={pokemon} />
           </div>
         </div>
         <div className="flex gap-10 items-center justify-center flex-wrap">

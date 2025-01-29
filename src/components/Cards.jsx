@@ -6,7 +6,6 @@ import AddToCart from "./shared/AddToCart";
 const Cards = ({ data }) => {
   // const [cartItems, setCartItems] = useState([]);
 
-
   return (
     <>
       {data.map((item) => (

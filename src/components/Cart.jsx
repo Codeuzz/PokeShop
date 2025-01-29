@@ -25,8 +25,13 @@ const Cart = () => {
                   title="Remove From Cart"
                 >
                   <i className="fa-solid fa-trash"></i>
-                </button> 
-                <Link to={`/PokeShop/pokemon-list/${item.id}`} className="text-2xl">{item.name} </Link>
+                </button>
+                <Link
+                  to={`/PokeShop/pokemon-list/${item.id}`}
+                  className="text-2xl"
+                >
+                  {item.name}{" "}
+                </Link>
               </li>
             ))
           ) : (

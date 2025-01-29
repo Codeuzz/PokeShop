@@ -33,7 +33,7 @@ const PokemonList = () => {
             data: { sprites, types, stats, id, height, weight },
           } = await axios.get(url);
           return { name, sprites, types, stats, id, height, weight };
-        }),
+        })
       );
       setData(pokemonWithSprites);
     } catch (err) {
@@ -51,7 +51,7 @@ const PokemonList = () => {
     setError(false);
     try {
       const response = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${term}`,
+        `https://pokeapi.co/api/v2/pokemon/${term}`
       );
       const { sprites, types, stats, id, height, weight, name } = response.data;
       setData([{ name, sprites, types, stats, id, height, weight }]);
@@ -85,15 +85,16 @@ const PokemonList = () => {
         <Cards data={data} />
       </div>
       <div className="flex gap-4 mb-10">
-        {page > 0 && <button
-          className="border-2 border-black bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
-          onClick={() => setPage((prev) => (prev > 0 ? prev - 1 : prev))}
-          disabled={loading || page === 0}
-        >
-          <i className="fa-solid fa-arrow-left"></i> Prev 12
-        </button>
-        }
-        
+        {page > 0 && (
+          <button
+            className="border-2 border-black bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
+            onClick={() => setPage((prev) => (prev > 0 ? prev - 1 : prev))}
+            disabled={loading || page === 0}
+          >
+            <i className="fa-solid fa-arrow-left"></i> Prev 12
+          </button>
+        )}
+
         <button
           className="border-2 border-black bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
           onClick={() => setPage((prev) => prev + 1)}

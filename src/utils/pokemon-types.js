@@ -19,7 +19,4 @@ const colours = {
   fairy: "#D685AD",
 };
 
-// module.exports = type => colours[type] || '#777';
-// module.exports.colors = colours;
-
 export default colours;
