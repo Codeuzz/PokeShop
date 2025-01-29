@@ -1,15 +1,10 @@
-import {
-  resetCartItems,
-  addCartItem,
-  removeCartItem,
-} from "../utils/slices/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Pokemon } from "../types/types";
 
 const Cart = () => {
-  const { cartItems } = useSelector((state) => state.cart);
-  // console.log(cartItems)
-  const dispatch = useDispatch();
+  const [cartItems, setCartItems] = useState<Pokemon[]>([]);
 
   return (
     <div className="flex flex-col w-full items-center gap-4">
@@ -21,7 +16,7 @@ const Cart = () => {
               <li className="flex items-center gap-2" key={item.id}>
                 <button
                   className="bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
-                  onClick={() => dispatch(removeCartItem(item))}
+                  // onClick={() => dispatch(removeCartItem(item))}
                   title="Remove From Cart"
                 >
                   <i className="fa-solid fa-trash"></i>
@@ -40,7 +35,7 @@ const Cart = () => {
         </ul>
       </div>
       <button
-        onClick={() => dispatch(resetCartItems())}
+        // onClick={() => dispatch(resetCartItems())}
         className="border-2 border-black bg-amber-400 px-2 rounded-xl hover:bg-amber-500"
       >
         Empty Cart
