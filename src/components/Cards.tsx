@@ -1,9 +1,15 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import colours from "../utils/pokemon-types";
 import { useState } from "react";
 import AddToCart from "./shared/AddToCart";
+import { Pokemon } from "./PokemonList";
 
-const Cards = ({ data }) => {
+interface CardsProps {
+  data: Pokemon[];
+}
+
+const Cards = ({ data }: CardsProps) => {
   // const [cartItems, setCartItems] = useState([]);
 
   return (

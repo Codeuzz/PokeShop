@@ -1,9 +1,10 @@
+import React from "react";
 import { useState } from "react";
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSearch(searchTerm.toLowerCase().trim());
   };

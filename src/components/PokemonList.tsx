@@ -1,15 +1,26 @@
+import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import SearchBar from "./SearchBar";
 import Cards from "./Cards";
 
+export interface Pokemon {
+  name: string;
+  sprites: {
+    front_default: string;
+  };
+  types: { type: { name: string } }[];
+  stats: { base_stat: number; stat: { name: string } }[];
+  id: number;
+  height: number;
+  weight: number;
+}
+
 const PokemonList = () => {
-  const [data, setData] = useState(null);
-  const [pokeData, setPokeData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(0);
+  const [data, setData] = useState<Pokemon[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(0);
 
   useEffect(() => {
     fetchData();
@@ -18,7 +29,7 @@ const PokemonList = () => {
   const fetchData = async () => {
     setLoading(true);
     setError(false);
-    setData(null);
+    setData([]);
 
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/`, {
@@ -27,13 +38,15 @@ const PokemonList = () => {
           offset: page * 12,
         },
       });
-      const pokemonWithSprites = await Promise.all(
-        response.data.results.map(async ({ name, url }) => {
-          const {
-            data: { sprites, types, stats, id, height, weight },
-          } = await axios.get(url);
-          return { name, sprites, types, stats, id, height, weight };
-        })
+      const pokemonWithSprites: Pokemon[] = await Promise.all(
+        response.data.results.map(
+          async ({ name, url }: { name: string; url: string }) => {
+            const {
+              data: { sprites, types, stats, id, height, weight },
+            } = await axios.get(url);
+            return { name, sprites, types, stats, id, height, weight };
+          }
+        )
       );
       setData(pokemonWithSprites);
     } catch (err) {
@@ -44,7 +57,7 @@ const PokemonList = () => {
     }
   };
 
-  const handleSearch = async (term) => {
+  const handleSearch = async (term: string) => {
     if (!term) return fetchData();
 
     setLoading(true);
