@@ -4,38 +4,8 @@ import SearchBar from "@atoms/SearchBar";
 import Cards from "@molecules/Cards";
 import { Pokemon } from "@customTypes/types";
 import { useQuery } from "@tanstack/react-query";
-
-const fetchPokemonList = async (page: number): Promise<Pokemon[]> => {
-  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/`, {
-    params: { limit: 12, offset: page * 12 },
-  });
-
-  return Promise.all(
-    response.data.results.map(
-      async ({ name, url }: { name: string; url: string }) => {
-        const {
-          data: { sprites, types, stats, id, height, weight },
-        } = await axios.get(url);
-        return { name, sprites, types, stats, id, height, weight };
-      }
-    )
-  );
-};
-
-const fetchPokemonByName = async (name: string): Promise<Pokemon[]> => {
-  const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
-  return [
-    {
-      name: data.name,
-      sprites: data.sprites,
-      types: data.types,
-      stats: data.stats,
-      id: data.id,
-      height: data.height,
-      weight: data.weight,
-    },
-  ];
-};
+import { fetchPokemonList } from "src/api/pokemonApi";
+import { fetchPokemonByName } from "src/api/pokemonApi";
 
 const PokemonList = () => {
   const [page, setPage] = useState<number>(0);
