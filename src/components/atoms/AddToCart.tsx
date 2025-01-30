@@ -35,7 +35,7 @@ const AddToCart = ({ item }: AddToCartProps) => {
           className={`${
             message.includes("added")
               ? "text-purple-400 bg-green-200"
-              : "text-purple-200 bg-red-600"
+              : "text-white bg-red-600"
           } py-1 px-2 rounded-md font-bold  absolute -top-6`}
         >
           {message}
