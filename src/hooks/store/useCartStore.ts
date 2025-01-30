@@ -4,15 +4,13 @@ import { create } from "zustand";
 interface CartStore {
   items: Pokemon[];
   removeItem: (id: number) => void;
-  addItem: (item: Pokemon) => void;
+  addItem: (newItem: Pokemon) => void;
   emptyCart: () => void;
   numberItems: number;
-  isAlreadyInCart: boolean;
-  alreadyMsg: string;
-  addedMsg: string;
+  isAlreadyInCart: (id: number) => boolean;
 }
 
-export const useCartStore = create<CartStore>((set) => ({
+export const useCartStore = create<CartStore>((set, get) => ({
   items: [],
   removeItem: (id) =>
     set((state) => {
@@ -24,22 +22,11 @@ export const useCartStore = create<CartStore>((set) => ({
     }),
   addItem: (newItem) =>
     set((state) => {
-      const existingItem = state.items.find(
-        (currentItem) => newItem.id === currentItem.id
-      );
-      if (!existingItem) {
-        const updatedItems = [...state.items, newItem];
-        return {
-          items: updatedItems,
-          numberItems: updatedItems.length,
-          isAlreadyInCart: false,
-        };
-      } else {
-        return {
-          ...state,
-          isAlreadyInCart: true,
-        };
-      }
+      const updatedItems = [...state.items, newItem];
+      return {
+        items: updatedItems,
+        numberItems: updatedItems.length,
+      };
     }),
   emptyCart: () =>
     set(() => ({
@@ -47,7 +34,5 @@ export const useCartStore = create<CartStore>((set) => ({
       numberItems: 0,
     })),
   numberItems: 0,
-  isAlreadyInCart: false,
-  alreadyMsg: "is already in your cart.",
-  addedMsg: "is added to the cart!",
+  isAlreadyInCart: (id) => get().items.some((item) => item.id === id),
 }));
