@@ -14,3 +14,16 @@ export type Pokemon = {
   height: number;
   weight: number;
 };
+
+export type Article = {
+  createdAt: Date;
+  name: string;
+  id: string;
+  text: string;
+};
+
+export type User = {
+  name: string;
+  avatar: string;
+  id: string;
+};
