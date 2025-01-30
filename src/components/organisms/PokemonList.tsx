@@ -1,21 +1,29 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 import SearchBar from "@atoms/SearchBar";
 import Cards from "@molecules/Cards";
 import { Pokemon } from "@customTypes/types";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPokemonList } from "src/api/pokemonApi";
 import { fetchPokemonByName } from "src/api/pokemonApi";
+import { useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PokemonList = () => {
-  const [page, setPage] = useState<number>(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialPage = Number(searchParams.get("page")) || 0;
+  const [page, setPage] = useState<number>(initialPage);
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
 
-  const { data, isLoading, isError, error } = useQuery<Pokemon[], Error>({
+  const { data, isLoading, isError, error, refetch } = useQuery<Pokemon[]>({
     queryKey: ["pokemons", searchTerm || page],
     queryFn: () =>
       searchTerm ? fetchPokemonByName(searchTerm) : fetchPokemonList(page),
+    retry: false,
   });
+
+  useEffect(() => {
+    setSearchParams({ page: page.toString() });
+  }, [page, setSearchParams]);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term || null);
@@ -30,7 +38,29 @@ const PokemonList = () => {
   }
   if (isError) {
     console.log(error);
-    return <p>Please write a numeric id</p>;
+    return (
+      <div className="flex flex-col justify-center items-center gap-10">
+        <h3 className="mt-10 text-center text-4xl font-semibold">
+          {error.message}
+        </h3>
+        {isNaN(Number(searchTerm)) ? (
+          <p className="text-lg">Please write a numeric ID or correct name.</p>
+        ) : Number(searchTerm) > 1025 ? (
+          <p className="text-lg">
+            There are currently no more than 1025 Pokémon!
+          </p>
+        ) : null}
+        <button
+          className="text-2xl border-2 border-black bg-amber-400 shadow-black shadow-md py-2 px-6 rounded-3xl hover:bg-amber-500 font-semibold"
+          onClick={() => {
+            setSearchTerm(null);
+            refetch();
+          }}
+        >
+          <Link to="/PokeShop/pokemon-list">Go Back</Link>
+        </button>
+      </div>
+    );
   }
 
   return (
