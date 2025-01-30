@@ -14,9 +14,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex gap-2">
-      <label htmlFor="search" className="text-lg">
-        Search for a Pokemon / ID
+    <form onSubmit={handleSearch} className="flex gap-2 items-center">
+      <label htmlFor="search" className="text-lg flex flex-col">
+        Search for a Pokemon or its ID
         <input
           id="search"
           type="text"
