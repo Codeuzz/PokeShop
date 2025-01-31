@@ -1,10 +1,6 @@
-import React from "react";
 import colours from "../../utils/pokemon-types";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 import AddToCart from "@atoms/AddToCart";
-import { Pokemon } from "@customTypes/types";
-import { fetchPokemonById } from "src/api/pokemonApi";
 import { usePokemon } from "src/hooks/pokemonQueries";
 
 const PokemonInfo = () => {
