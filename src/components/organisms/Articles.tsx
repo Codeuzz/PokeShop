@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useArticles } from "src/hooks/articleQueries";
 import { Article } from "@customTypes/types";
 import { ArticleCard } from "@molecules/ArticleCard";
+import { Link } from "react-router-dom";
 
 export const Articles = () => {
   const { data, isLoading, error, isError, createArticle, removeArticle } =
@@ -29,6 +30,27 @@ export const Articles = () => {
     });
   };
 
+  if (isLoading) {
+    return (
+      <h3 className="m-10 text-center text-5xl font-semibold italic">
+        Loading...
+      </h3>
+    );
+  }
+  if (isError) {
+    console.log(error);
+    return (
+      <>
+        <h3 className="m-10 text-center text-5xl font-semibold italic">
+          There was an error fetching the Articles.
+        </h3>
+        <button className="text-2xl border-2 border-black bg-amber-400 shadow-black shadow-md py-2 px-6 rounded-3xl hover:bg-amber-500 font-semibold">
+          <Link to="/PokeShop/">Go Home</Link>
+        </button>
+      </>
+    );
+  }
+
   return (
     <div className="w-full flex flex-col items-center gap-10 p-14">
       <h1 className="text-4xl font-bold italic">
@@ -36,25 +58,39 @@ export const Articles = () => {
       </h1>
       <form
         onSubmit={handleCreation}
-        className="flex flex-col gap-3 py-4 px-10 border-4 border-purple-700 rounded-2xl bg-yellow-400 w-1/4"
+        className="flex flex-col gap-3 py-8 rounded-2xl bg-purple-600 w-1/2 items-center shadow-black shadow-md"
       >
-        <h3 className="text-xl font-bold text-center">Make Your Own Article</h3>
-        <input
-          placeholder="Title"
-          value={newArticleTitle}
-          onChange={(e) => setNewArticleTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Write your content here.."
-          value={newArticleText}
-          onChange={(e) => setNewArticleText(e.target.value)}
-        />
-        <input
-          placeholder="Written by.."
-          value={newArticleAuthor}
-          onChange={(e) => setNewArticleAuthor(e.target.value)}
-        />
-        <button type="submit">Create Article</button>
+        <h3 className="text-3xl font-semibold italic text-center">
+          Make Your Own Article !
+        </h3>
+
+        <div className="w-3/4 flex flex-col gap-4 p-4 justify-center border-4 border-black rounded-2xl bg-yellow-500 shadow-black shadow-md">
+          <input
+            placeholder="Title"
+            value={newArticleTitle}
+            onChange={(e) => setNewArticleTitle(e.target.value)}
+            className="border-2 border-black p-2 rounded-md bg-purple-300 placeholder:text-gray-700"
+          />
+          <textarea
+            className="border-2 border-black p-2 rounded-md bg-purple-300 placeholder:text-gray-700"
+            placeholder="Write your content here.."
+            rows={5}
+            value={newArticleText}
+            onChange={(e) => setNewArticleText(e.target.value)}
+          />
+          <input
+            className="border-2 border-black p-2 rounded-md bg-purple-300 placeholder:text-gray-700"
+            placeholder="Written by.."
+            value={newArticleAuthor}
+            onChange={(e) => setNewArticleAuthor(e.target.value)}
+          />
+        </div>
+        <button
+          className="text-lg border-2 border-black bg-amber-400 text-black shadow-black shadow-md py-2 px-6 rounded-3xl hover:bg-amber-500"
+          type="submit"
+        >
+          Create Article
+        </button>
       </form>
       <div className="flex flex-col gap-4 w-full flex-wrap justify-center items-center">
         {data &&
