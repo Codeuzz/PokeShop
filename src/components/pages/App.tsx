@@ -4,6 +4,7 @@ import PokemonList from "@organisms/PokemonList";
 import "src/App.css";
 import Cart from "@organisms/Cart";
 import PokemonInfo from "@organisms/PokemonInfo";
+import { Articles } from "@organisms/Articles";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/PokeShop/pokemon-info" element={<PokemonList />} />
       <Route path="/PokeShop/cart" element={<Cart />} />
       <Route path="/PokeShop/pokemon-list/:name" element={<PokemonInfo />} />
+      <Route path="/PokeShop/articles" element={<Articles />} />
     </Routes>
   );
 }
