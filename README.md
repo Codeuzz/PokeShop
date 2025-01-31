@@ -20,13 +20,13 @@ npm run dev
 
 l'application sera disponible à l'adresse suivante : http://localhost:5173/PokeShop/
 
-### Routes disponibles
+## Routes disponibles
 
-/PokeShop/ : Page d'accueil.
-/PokeShop/pokemon-list : Liste de tous les Pokémon.
-/PokeShop/pokemon-list/:name : Détails d'un Pokémon spécifique.
-/PokeShop/articles : Liste des articles écrits sur les Pokémon.
-/PokeShop/articles/:id : Détails d'un article spécifique.
+- `/PokeShop/` : Page d'accueil.
+- `/PokeShop/pokemon-list` : Liste de tous les Pokémon.
+- `/PokeShop/pokemon-list/:name` : Détails d'un Pokémon spécifique.
+- `/PokeShop/articles` : Liste des articles écrits sur les Pokémon.
+- `/PokeShop/articles/:id` : Détails d'un article spécifique.
 
 ### Contribuer
 
