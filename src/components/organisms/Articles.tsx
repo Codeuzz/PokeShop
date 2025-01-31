@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useArticles } from "src/hooks/articleQueries";
 import { Article } from "@customTypes/types";
+import { ArticleCard } from "@molecules/ArticleCard";
 
 export const Articles = () => {
   const { data, isLoading, error, isError, createArticle, removeArticle } =
@@ -19,11 +20,17 @@ export const Articles = () => {
       text: newArticleText,
       name: newArticleAuthor,
     };
-    createArticle.mutate(article);
+    createArticle.mutate(article, {
+      onSuccess: () => {
+        setNewArticleAuthor("");
+        setNewArticleText("");
+        setNewArticleTitle("");
+      },
+    });
   };
 
   return (
-    <div className="w-full flex flex-col items-center gap-10 mt-10 p-20">
+    <div className="w-full flex flex-col items-center gap-10 p-14">
       <h1 className="text-4xl font-bold italic">
         Delete Fake Articles about Pokemon and make New Ones!
       </h1>
@@ -34,38 +41,28 @@ export const Articles = () => {
         <h3 className="text-xl font-bold text-center">Make Your Own Article</h3>
         <input
           placeholder="Title"
+          value={newArticleTitle}
           onChange={(e) => setNewArticleTitle(e.target.value)}
         />
         <textarea
           placeholder="Write your content here.."
+          value={newArticleText}
           onChange={(e) => setNewArticleText(e.target.value)}
         />
         <input
           placeholder="Written by.."
+          value={newArticleAuthor}
           onChange={(e) => setNewArticleAuthor(e.target.value)}
         />
         <button type="submit">Create Article</button>
       </form>
-      <div className="flex gap-4 max-w-full flex-wrap justify-center">
+      <div className="flex flex-col gap-4 w-full flex-wrap justify-center items-center">
         {data &&
           data.map((article) => (
-            <div
-              key={article.id}
-              className="flex flex-col gap-3 items-center justify-between p-4 border-4 rounded-2xl border-black w-80"
-            >
-              <div className="flex flex-col items-center gap-4">
-                <h3 className="text-xl font-bold">{article.title}</h3>
-                <p className="text-lg">{article.text}</p>
-              </div>
-
-              <button
-                className="bg-amber-400 px-4 py-1 rounded-xl hover:bg-amber-500 "
-                onClick={() => removeArticle.mutate(article.id)}
-                title="Remove From Cart"
-              >
-                <i className="fa-solid fa-trash"></i>
-              </button>
-            </div>
+            <ArticleCard
+              article={article}
+              handleRemove={removeArticle.mutate}
+            />
           ))}
       </div>
     </div>

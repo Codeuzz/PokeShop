@@ -1,5 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { deleteArticle, fetchArticles, postArticle } from "src/api/articleApi";
+import {
+  deleteArticle,
+  fetchArticleById,
+  fetchArticles,
+  postArticle,
+} from "src/api/articleApi";
 
 export const useArticles = () => {
   const queryClient = useQueryClient();
@@ -20,4 +25,12 @@ export const useArticles = () => {
   });
 
   return { data, isLoading, error, isError, createArticle, removeArticle };
+};
+
+export const useArticle = (id: string) => {
+  return useQuery({
+    queryKey: ["article", id],
+    queryFn: () => fetchArticleById(id),
+    enabled: !!id,
+  });
 };

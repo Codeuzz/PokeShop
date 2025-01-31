@@ -9,6 +9,12 @@ export const fetchArticles = async (): Promise<Article[]> => {
   return response.data;
 };
 
+export const fetchArticleById = async (articleId: string): Promise<Article> => {
+  const response = await axios.get<Article>(`${url}/${articleId}`);
+
+  return response.data;
+};
+
 export const postArticle = async (article: Article) => {
   const response = await axios.post<Article>(url, article);
 
