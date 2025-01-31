@@ -32,3 +32,11 @@ export const fetchPokemonByName = async (name: string): Promise<Pokemon[]> => {
     },
   ];
 };
+
+export const fetchPokemonById = async (id: string) => {
+  const { data } = await axios.get<Pokemon>(
+    `https://pokeapi.co/api/v2/pokemon/${id}`
+  );
+
+  return data;
+};
