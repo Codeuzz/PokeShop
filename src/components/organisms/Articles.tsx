@@ -60,11 +60,11 @@ export const Articles = () => {
         onSubmit={handleCreation}
         className="flex flex-col gap-3 py-8 rounded-2xl bg-purple-600 w-1/2 items-center shadow-black shadow-md"
       >
-        <h3 className="text-3xl font-semibold italic text-center">
+        <h3 className="text-3xl text-white font-semibold italic text-center">
           Make Your Own Article !
         </h3>
 
-        <div className="w-3/4 flex flex-col gap-4 p-4 justify-center border-4 border-black rounded-2xl bg-yellow-500 shadow-black shadow-md">
+        <div className="w-3/4 flex flex-col gap-4 p-4 justify-center border-4 border-black rounded-2xl bg-yellow-500 shadow-white shadow-lg">
           <input
             placeholder="Title"
             value={newArticleTitle}
@@ -86,7 +86,7 @@ export const Articles = () => {
           />
         </div>
         <button
-          className="text-lg border-2 border-black bg-amber-400 text-black shadow-black shadow-md py-2 px-6 rounded-3xl hover:bg-amber-500"
+          className="text-lg border-2 border-black bg-amber-400 text-black shadow-white shadow-md py-2 px-6 rounded-3xl hover:bg-amber-500"
           type="submit"
         >
           Create Article

@@ -48,7 +48,7 @@ export const ArticleDetail = () => {
       </div>
       <p className="italic">Written By {data.name}</p>
       <button
-        className="bg-yellow-500 text-black font-bold px-4 py-2 rounded-lg"
+        className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded-lg "
         onClick={() => navigate(-1)}
       >
         Go Back
