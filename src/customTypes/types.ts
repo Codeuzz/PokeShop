@@ -20,6 +20,7 @@ export type Article = {
   name: string;
   id: string;
   text: string;
+  title: string;
 };
 
 export type User = {
